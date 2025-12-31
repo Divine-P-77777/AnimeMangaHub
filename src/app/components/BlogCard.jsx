@@ -1,29 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import { trackClick, trackReadTime } from "@/lib/analytics";
+import { trackClick } from "@/lib/analytics";
 
 export default function BlogCard({ blog, onRead }) {
-  const startTimeRef = useRef(null);
-
-  useEffect(() => {
-    startTimeRef.current = Date.now();
-
-    return () => {
-      if (!startTimeRef.current) return;
-      const seconds = Math.floor(
-        (Date.now() - startTimeRef.current) / 1000
-      );
-      trackReadTime(blog.id, seconds);
-    };
-  }, [blog.id]);
-
   return (
     <article
       onClick={() => {
         trackClick(blog.id);
-        onRead(blog);
+        onRead();
       }}
       className="group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-slate-950/80 to-slate-900/60 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-teal-400/40 hover:shadow-[0_0_40px_-10px_rgba(45,212,191,0.4)]"
     >
@@ -35,8 +20,6 @@ export default function BlogCard({ blog, onRead }) {
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
-
-        {/* subtle overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
       </div>
 

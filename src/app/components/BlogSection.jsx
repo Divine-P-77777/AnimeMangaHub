@@ -16,7 +16,7 @@ export default function BlogSection() {
   const paginatedBlogs = useMemo(() => {
     const start = (page - 1) * PAGE_SIZE;
     return BLOGS.slice(start, start + PAGE_SIZE);
-  }, [page]);
+  }, [page, BLOGS.length]);
 
   return (
     <>
@@ -41,7 +41,7 @@ export default function BlogSection() {
             <BlogCard
               key={blog.id}
               blog={blog}
-              onRead={(b) => setSelectedBlog(b)}
+              onRead={() => setSelectedBlog(blog)}
             />
           ))}
         </div>
@@ -70,7 +70,7 @@ export default function BlogSection() {
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Surprise Modal (single source of truth) */}
       <SurpriseModal
         blog={selectedBlog}
         onClose={() => setSelectedBlog(null)}
