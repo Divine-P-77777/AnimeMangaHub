@@ -194,7 +194,7 @@ export const BLOGS = [
   {
     id: 13,
     title: "Bleach: Thousand-Year Blood War – Final Arc Glory",
-    image: "https://images.alphacoders.com/1304/1304796.jpg",
+    image: "https://wallpapers.com/images/hd/ichigo-and-zangetsu-bleach-4k-ultra-hd-fanart-ymhbljxwfhxsnm3n.jpg",
     description: "Soul Reapers vs Quincy in epic conclusion.",
     content: "Bleach TYBW hits 9.01 on MAL.[web:1]",
     anime: {
