@@ -226,7 +226,7 @@ export const BLOGS = [
   {
     id: 15,
     title: "Violet Evergarden – Letters of the Heart",
-    image: "https://images.alphacoders.com/888/888889.jpg",
+    image: "https://wallpapers-clan.com/wp-content/uploads/2024/08/violet-evergarden-reading-letter-wallpaper-desktop-wallpaper-cover.jpg",
     description: "An auto-memory doll learns human emotion.",
     content: "Violet Evergarden rates 8.68 on MAL.[web:4]",
     anime: {
