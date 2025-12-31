@@ -130,7 +130,7 @@ export const BLOGS = [
   {
     id: 9,
     title: "One Piece – Dreams on the Grand Line",
-    image: "https://images.alphacoders.com/1044/1044921.jpg",
+    image: "https://wallpapers.com/images/hd/one-piece-pictures-vg1pferor2m9vo5l.jpg",
     description: "Pirates chase the ultimate treasure in a vast ocean world.",
     content: "One Piece endures with 8.72 MAL rating and millions of members.[web:4]",
     anime: {
