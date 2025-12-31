@@ -146,7 +146,7 @@ export const BLOGS = [
   {
     id: 10,
     title: "Cowboy Bebop – Bounty Hunters in Space",
-    image: "https://images.alphacoders.com/322/322760.jpg",
+    image: "https://images4.alphacoders.com/661/thumb-1920-661990.png",
     description: "Jazz, guns, and past regrets across the solar system.",
     content: "Cowboy Bebop's style earns 8.75 on MAL.[web:4]",
     anime: {
