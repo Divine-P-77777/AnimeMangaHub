@@ -306,7 +306,7 @@ export const BLOGS = [
   {
     id: 20,
     title: "Legend of the Galactic Heroes – Space Opera Epic",
-    image: "https://images.alphacoders.com/102/102483.jpg",
+    image: "https://www.slashfilm.com/img/gallery/legend-of-the-galactic-heroes/intro-import.jpg",
     description: "Galactic empires clash in strategy and philosophy.",
     content: "Legend of Galactic Heroes masters at 9.02 MAL.[web:4]",
     anime: {
