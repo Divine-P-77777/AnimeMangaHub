@@ -34,7 +34,7 @@ export const BLOGS = [
   {
     id: 3,
     title: "Your Name – A Thread Across Time",
-    image: "https://images.alphacoders.com/737/737400.jpg",
+    image: "https://wallpapers.com/images/hd/your-name-taki-and-mitsuha-red-string-knd59f7ecab132ma.jpg",
     description: "A poetic story of love, loss, and cosmic coincidence.",
     content: "Makoto Shinkai's masterpiece intertwines distance and destiny, holding a 9.37 MAL score with 2 million members.[web:4]",
     anime: {
