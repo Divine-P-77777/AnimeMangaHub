@@ -178,7 +178,7 @@ export const BLOGS = [
   {
     id: 12,
     title: "Vinland Saga – Viking Sagas of Vengeance",
-    image: "https://images.alphacoders.com/1059/1059924.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbnDKN5N0QDBoQ-GbrCE0VXqLi_Cde9szZ9g&s",
     description: "From warrior to seeker of paradise.",
     content: "Vinland Saga impresses at 8.75 MAL rating.[web:4]",
     anime: {
