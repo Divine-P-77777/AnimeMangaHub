@@ -290,7 +290,7 @@ export const BLOGS = [
   {
     id: 19,
     title: "Naruto – Ninja Way Perseverance",
-    image: "https://images.alphacoders.com/497/497892.jpg",
+    image: "https://static.toiimg.com/thumb/msid-109699531,width-1280,height-720,resizemode-4/109699531.jpg",
     description: "From outcast to Hokage legend.",
     content: "Naruto's saga rates 7.99 on MAL.[web:6]",
     anime: {
