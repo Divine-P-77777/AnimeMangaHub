@@ -210,7 +210,7 @@ export const BLOGS = [
   {
     id: 14,
     title: "Monster – The Hunt for Johan Liebert",
-    image: "https://images.alphacoders.com/526/526487.jpg",
+    image: "https://wallpapercave.com/wp/wp10133302.jpg",
     description: "A surgeon's moral dilemma unleashes terror.",
     content: "Monster's psychological depth earns 8.88 MAL.[web:4]",
     anime: {
