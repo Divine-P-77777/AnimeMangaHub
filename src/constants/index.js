@@ -274,7 +274,7 @@ export const BLOGS = [
   {
     id: 18,
     title: "My Hero Academia – Plus Ultra Heroes",
-    image: "https://images.alphacoders.com/936/936254.jpg",
+    image: "https://wallpapers.com/images/featured/my-hero-academia-pictures-otjtzn3d4q78f6kx.jpg",
     description: "Quirk society trains future heroes.",
     content: "My Hero Academia holds 7.88 average.[web:6]",
     anime: {
