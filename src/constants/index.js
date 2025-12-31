@@ -114,7 +114,7 @@ export const BLOGS = [
   {
     id: 8,
     title: "Death Note – Justice or Vengeance?",
-    image: "https://images.alphacoders.com/311/311401.jpg",
+    image: "https://wallpapers.com/images/featured/death-note-htruruirspqq0zot.jpg",
     description: "A notebook that kills sparks a battle of intellects.",
     content: "Death Note's cat-and-mouse game holds 8.62 on MAL with massive popularity.[web:3][web:6]",
     anime: {
