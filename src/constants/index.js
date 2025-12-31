@@ -82,7 +82,7 @@ export const BLOGS = [
   {
     id: 6,
     title: "Frieren: Beyond Journey's End – Echoes of Eternity",
-    image: "https://images.alphacoders.com/1330/1330584.jpg",
+    image: "https://m.media-amazon.com/images/S/pv-target-images/0cee73934e4d8cc9fe65c4ab759b4c1b049f75fff3f4c52b273c2699efadd7d1._SX1080_FMjpg_.jpg",
     description: "An elf mage reflects on time, loss, and unspoken regrets.",
     content: "Frieren leads 2020s ratings at 9.35 on MAL with 1.2 million members, redefining fantasy.[web:4][web:12]",
     anime: {
