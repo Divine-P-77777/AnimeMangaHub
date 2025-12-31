@@ -66,7 +66,7 @@ export const BLOGS = [
   {
     id: 5,
     title: "Hunter x Hunter (2011) – The Hunter's Oath",
-    image: "https://images.alphacoders.com/489/489958.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgZihkfu1YaZILHSHG1NLcQCuE7hAUpQ2wzw&s",
     description: "Friendship, rivalry, and the endless pursuit of strength.",
     content: "Madhouse's adaptation earns 9.03 on MAL, captivating over 2 million members with its depth.[web:1][web:4]",
     anime: {
