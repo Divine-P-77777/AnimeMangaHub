@@ -258,7 +258,7 @@ export const BLOGS = [
   {
     id: 17,
     title: "Demon Slayer – Breathing Styles Unleashed",
-    image: "https://images.alphacoders.com/1024/1024924.jpg",
+    image: "https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/01/split-images-of-giyu-tanjiro-and-zenitsu.jpg?q=70&fit=crop&w=1200&h=628&dpr=1",
     description: "Slayers protect humanity from demons.",
     content: "Demon Slayer scores 8.49 on MAL.[web:6]",
     anime: {
