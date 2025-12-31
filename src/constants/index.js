@@ -18,7 +18,7 @@ export const BLOGS = [
   {
     id: 2,
     title: "Attack on Titan – Freedom at a Terrible Price",
-    image: "https://images.alphacoders.com/941/941998.jpg",
+    image: "https://i.ytimg.com/vi/1RGvDJV6gIA/sddefault.jpg",
     description: "What does freedom mean in a world surrounded by walls and war?",
     content: "Attack on Titan delves into cycles of hatred and survival, boasting around 2.5 million members and a 8.54 rating on MAL.[web:1][web:6]",
     anime: {
