@@ -98,7 +98,7 @@ export const BLOGS = [
   {
     id: 7,
     title: "Gintama – Laughter in a Samurai World",
-    image: "https://images.alphacoders.com/232/232974.jpg",
+    image: "https://wallpapers.com/images/hd/gintama-background-40wtrmt63sqeqv8o.jpg",
     description: "Parody, action, and heart in Edo's alien-infested streets.",
     content: "Gintama blends comedy and drama for a 8.93 MAL score across its long run.[web:1][web:4]",
     anime: {
