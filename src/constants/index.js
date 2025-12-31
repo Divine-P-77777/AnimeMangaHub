@@ -50,7 +50,7 @@ export const BLOGS = [
   {
     id: 4,
     title: "Fullmetal Alchemist: Brotherhood – The Ultimate Sacrifice",
-    image: "https://images.alphacoders.com/430/430644.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmWlojQ8V1jRWGVlLFxNjk9VamUmbiBdSIjg&s",
     description: "Alchemy, atonement, and the bonds that define humanity.",
     content: "Fullmetal Alchemist: Brotherhood tops charts at 9.09 on MAL, with millions of fans praising its epic storyline.[web:1][web:4]",
     anime: {
