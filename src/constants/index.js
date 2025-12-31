@@ -242,7 +242,7 @@ export const BLOGS = [
   {
     id: 16,
     title: "Jujutsu Kaisen – Curses and Sorcerers",
-    image: "https://images.alphacoders.com/1126/1126652.jpg",
+    image: "https://us-east-1-bandai.graphassets.com/AXzioIclSWilEjFtsMJPwz/TNkEuJ56SmTNWTqcvJwR",
     description: "Modern sorcery battles ancient curses.",
     content: "Jujutsu Kaisen thrives with high popularity.[web:6]",
     anime: {
