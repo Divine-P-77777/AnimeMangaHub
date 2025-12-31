@@ -2,7 +2,7 @@ export const BLOGS = [
   {
     id: 1,
     title: "Steins;Gate – When Time Refuses to Obey",
-    image: "https://images.alphacoders.com/198/198462.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY3OXyAtH8S-DFCWUwa0-4uyzthMjC3su8kA&s",
     description: "A deep dive into causality, timelines, and the emotional cost of rewriting fate.",
     content: "Steins;Gate explores the fragile boundary between curiosity and consequence, rated 9.07 on MyAnimeList with over 1.5 million members.[web:1][web:4]",
     anime: {
