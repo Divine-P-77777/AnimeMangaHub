@@ -162,7 +162,7 @@ export const BLOGS = [
   {
     id: 11,
     title: "Code Geass – Rebellion of the Black Knights",
-    image: "https://images.alphacoders.com/430/430649.jpg",
+    image: "https://w0.peakpx.com/wallpaper/462/346/HD-wallpaper-code-geass-black-knights-code-geass-kallen-c2-cc-zero-geass-lelouch.jpg",
     description: "Power, strategy, and the cost of revolution.",
     content: "Code Geass scores 8.70 on MAL for its mecha intrigue.[web:4]",
     anime: {
