@@ -22,9 +22,28 @@ export default function BlogSection() {
     setLoading(true);
     try {
       const result = await getRecommendation();
-      setRecommendation(result);
+
+      if (!result) {
+        // No history? Open manual mode immediately
+        setRecommendation({ manualMode: true });
+      } else {
+        setRecommendation(result);
+      }
     } catch (error) {
       console.error("Failed to get recommendation", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleManualSearch = async (criteria) => {
+    setLoading(true);
+    try {
+      // criteria: { genres: [], preferred_episodes: int, type: str, top_n: 10 }
+      const result = await getRecommendation(criteria);
+      setRecommendation(result);
+    } catch (error) {
+      console.error("Manual search failed", error);
     } finally {
       setLoading(false);
     }
@@ -116,8 +135,10 @@ export default function BlogSection() {
       {/* Recommendation Modal */}
       <SurpriseModal
         prediction={recommendation}
+        isLoading={loading}
         onClose={() => setRecommendation(null)}
         onRead={(blog) => setSelectedBlog(blog)}
+        onManualSearch={handleManualSearch}
       />
 
     </>

@@ -2,18 +2,30 @@ import BLOGS from "@/constants/index";
 import { getUserHistory } from "@/lib/analytics";
 import { buildPreferenceProfile } from "@/lib/preferenceBuilder";
 
-export async function getRecommendation() {
-    const history = getUserHistory();
-    const preference = buildPreferenceProfile(BLOGS, history);
+const API_URL = process.env.NODE_ENV === "development"
+    ? "http://localhost:8000"
+    : process.env.RECOMMENDATION_API_URL;
+
+
+export async function getRecommendation(manualPreference = null) {
+    let preference;
+
+    if (manualPreference) {
+        console.log("🛠️ Using manual preference:", manualPreference);
+        preference = manualPreference;
+    } else {
+        const history = getUserHistory();
+        preference = buildPreferenceProfile(BLOGS, history);
+    }
 
     if (!preference) {
-        console.warn("⚠️ Not enough user activity for recommendation");
+        console.warn("⚠️ Not enough user activity & no manual input");
         return null;
     }
 
     console.log("📤 Sending preference to API:", preference);
 
-    const res = await fetch("http://localhost:8000/surprise", {
+    const res = await fetch(`${API_URL}/surprise`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(preference),
