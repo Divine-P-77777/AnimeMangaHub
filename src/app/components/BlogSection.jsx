@@ -62,11 +62,11 @@ export default function BlogSection() {
             className="group relative flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 px-8 py-3 text-sm font-bold uppercase tracking-widest text-white transition-all hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(45,212,191,0.5)] disabled:opacity-70"
           >
             {loading ? (
-              <Loader2 className="w-5 h-5 animate-spin" />
+              <Loader2 className="w-5 h-5 animate-spin text-black" />
             ) : (
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="w-5 h-5 text-black" />
             )}
-            <span>Surprise Me</span>
+            <span className="text-xs uppercase tracking-[0.2em] text-black">Surprise Me</span>
           </button>
         </div>
 

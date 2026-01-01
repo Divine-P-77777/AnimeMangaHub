@@ -1,8 +1,18 @@
 const STORAGE_KEY = "user_interactions";
 
 function getData() {
-  if (typeof window === "undefined") return { clicks: {}, readTimes: {} };
-  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { clicks: {}, readTimes: {} };
+  if (typeof window === "undefined") {
+    return { clicks: {}, readTimes: {} };
+  }
+
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+      clicks: {},
+      readTimes: {},
+    };
+  } catch {
+    return { clicks: {}, readTimes: {} };
+  }
 }
 
 function save(data) {

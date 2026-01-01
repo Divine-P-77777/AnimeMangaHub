@@ -1,42 +1,45 @@
 export function buildPreferenceProfile(blogs, history) {
-    let total = 0;
+    let totalWeight = 0;
 
-    let pref = {
+    const acc = {
         episodes: 0,
-        members: 0,
         genres: {},
-        type: {},
+        types: {},
     };
 
     blogs.forEach((blog) => {
         const clicks = history.clicks[blog.id] || 0;
-        const readMin = (history.readTimes[blog.id] || 0) / 60;
-        const weight = clicks + readMin * 2;
+        const readSeconds = history.readTimes[blog.id] || 0;
 
-        if (weight === 0) return;
+        // stronger signal from reading than clicking
+        const weight = clicks + (readSeconds / 60) * 2;
 
-        total += weight;
-        pref.episodes += blog.anime.episodes * weight;
-        pref.members += blog.anime.members * weight;
+        if (weight <= 0) return;
 
-        blog.anime.genres.forEach(g => {
-            pref.genres[g] = (pref.genres[g] || 0) + weight;
+        totalWeight += weight;
+        acc.episodes += blog.anime.episodes * weight;
+
+        blog.anime.genres.forEach((g) => {
+            acc.genres[g] = (acc.genres[g] || 0) + weight;
         });
 
-        pref.type[blog.anime.type] =
-            (pref.type[blog.anime.type] || 0) + weight;
+        acc.types[blog.anime.type] =
+            (acc.types[blog.anime.type] || 0) + weight;
     });
 
-    if (total === 0) return null;
+    if (totalWeight === 0) return null;
+
+    const topGenres = Object.entries(acc.genres)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([g]) => g);
+
+    if (topGenres.length === 0) return null;
 
     return {
-        episodes: Math.round(pref.episodes / total),
-        members: Math.round(pref.members / total),
-        genres: Object.entries(pref.genres)
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 3)
-            .map(([g]) => g),
-        type: Object.entries(pref.type)
-            .sort((a, b) => b[1] - a[1])[0][0],
+        genres: topGenres,
+        preferred_episodes: Math.round(acc.episodes / totalWeight),
+        type: Object.entries(acc.types).sort((a, b) => b[1] - a[1])[0][0],
+        top_n: 10,
     };
 }

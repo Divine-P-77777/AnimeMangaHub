@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import BLOGS from "@/constants/index";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 const getRandomBlogs = (blogs, count = 5) => {
   const shuffled = [...blogs].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
@@ -25,7 +24,7 @@ const titleVariants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.6,
-      ease: [0.16, 1, 0.3, 1], 
+      ease: [0.16, 1, 0.3, 1],
     },
   },
   exit: {
@@ -38,10 +37,7 @@ const titleVariants = {
 };
 
 const descVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-  },
+  initial: { opacity: 0, y: 20 },
   animate: {
     opacity: 1,
     y: 0,
@@ -70,7 +66,6 @@ export default function Hero() {
       ? activeBlog.description.slice(0, 37).trimEnd() + "..."
       : activeBlog.description;
 
-
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % featuredBlogs.length);
@@ -78,7 +73,6 @@ export default function Hero() {
 
     return () => clearInterval(interval);
   }, [featuredBlogs.length]);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,7 +90,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Background */}
       <div
         className="absolute inset-0 z-0"
         style={{ transform: `translateY(${bgOffset}px)` }}
@@ -104,9 +97,8 @@ export default function Hero() {
         {featuredBlogs.map((blog, index) => (
           <div
             key={blog.title}
-            className={`absolute inset-0 transition-opacity duration-700 ${
-              index === activeIndex ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-700 ${index === activeIndex ? "opacity-100" : "opacity-0"
+              }`}
           >
             <Image
               src={blog.image}
@@ -119,11 +111,9 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Overlays */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
       <div className="absolute inset-y-0 right-0 z-20 w-full md:w-1/2 bg-gradient-to-l from-black/95 via-black/85 to-transparent" />
 
-      {/* Content */}
       <div className="relative z-30 mx-auto flex min-h-screen max-w-6xl items-center px-4 md:px-6">
         <div
           className="ml-auto max-w-md space-y-6 text-slate-100"
@@ -133,7 +123,6 @@ export default function Hero() {
             Featured Blog
           </p>
 
-          {/* 🔥 Animated text */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeBlog.title}
@@ -158,7 +147,6 @@ export default function Hero() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Buttons */}
           <div className="mt-4 flex flex-wrap gap-3">
             <button className="rounded-full border border-teal-300/80 bg-black/60 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-teal-100 backdrop-blur-xl hover:bg-teal-300/10">
               Explore Blog
@@ -178,21 +166,19 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Controls */}
       <div
         className="pointer-events-none absolute bottom-6 left-1/2 z-30 flex w-full -translate-x-1/2 justify-center px-4 md:left-6 md:translate-x-0 md:justify-start"
         style={{ transform: `translateY(${controlsOffset * -0.2}px)` }}
       >
-        <div className="pointer-events-auto flex max-w-xl gap-2 rounded-2xl border border-white/10 bg-black/60 p-2 backdrop-blur-xl">
+        <div className="pointer-events-auto hidden md:flex max-w-xl gap-2 rounded-2xl border border-white/10 bg-black/60 p-2 backdrop-blur-xl">
           {featuredBlogs.map((blog, index) => (
             <button
               key={blog.title}
               onClick={() => setActiveIndex(index)}
-              className={`flex-1 rounded-xl px-3 py-2 text-left transition-all ${
-                index === activeIndex
+              className={`flex-1 rounded-xl px-3 py-2 text-left transition-all ${index === activeIndex
                   ? "bg-teal-400/20 border border-teal-300/80"
                   : "bg-white/5 opacity-70 hover:opacity-100"
-              }`}
+                }`}
             >
               <p className="text-[9px] uppercase tracking-[0.2em] text-teal-300/80">
                 {index === activeIndex ? "Now Playing" : "Next Up"}
@@ -201,6 +187,19 @@ export default function Hero() {
                 {blog.title}
               </p>
             </button>
+          ))}
+        </div>
+
+        <div className="pointer-events-auto flex md:hidden gap-2">
+          {featuredBlogs.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`h-2.5 w-2.5 rounded-full transition-all ${index === activeIndex
+                  ? "bg-teal-400 scale-125"
+                  : "bg-white/40 hover:bg-white/70"
+                }`}
+            />
           ))}
         </div>
       </div>
