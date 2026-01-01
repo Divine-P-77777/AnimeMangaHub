@@ -57,6 +57,7 @@ export default function BlogSection() {
 
           {/* Surprise Button */}
           <button
+            id="surprise-me-btn"
             onClick={handleSurprise}
             disabled={loading}
             className="group relative flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 px-8 py-3 text-sm font-bold uppercase tracking-widest text-white transition-all hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(45,212,191,0.5)] disabled:opacity-70"

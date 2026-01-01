@@ -15,8 +15,13 @@ export default function HomePage() {
       <Navbar />
 
       <Hero
-        title="Tokyo Rift: Memory Overdrive"
-        description="Follow the last vanguard through a collapsing anime multiverse."
+        title="Don't Just Watch. Discover."
+        description="Your ultimate destination for in-depth anime reviews, manga breakdowns, and intelligent recommendations tailored to your taste."
+        onSurprise={() => {
+          document.getElementById('surprise-me-btn')?.click(); // Quick hack to trigger existing logic without massive refactor
+          // ideally we lift state, but this works instanly for now
+          document.querySelector('section')?.scrollIntoView({ behavior: 'smooth' });
+        }}
       />
 
       {/* Pass setter DOWN */}
