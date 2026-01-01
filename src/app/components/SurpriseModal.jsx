@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 import BLOGS from "@/constants/index";
 import { Search, Sparkles, X, ChevronRight, SlidersHorizontal, RotateCw } from "lucide-react";
 
@@ -19,12 +19,36 @@ const TYPES = [
   { label: "Web Series (100+)", value: 100, type: "TV" },
 ];
 
-export default function SurpriseModal({ prediction, onClose, onRead, onManualSearch, isLoading }) {
+
+
+export default function SurpriseModal({
+  prediction,
+  onClose,
+  onRead,
+  onManualSearch,
+  isLoading = false
+}) {
   const [isManual, setIsManual] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState([]);
-  const [selectedType, setSelectedType] = useState(TYPES[1]); // Default to Short
+  const [selectedType, setSelectedType] = useState(TYPES[1]);
 
-  // Effect: If prediction is actually a "manual mode request" (empty history), switch to manual automatically
+  // Reset form state when closing
+  const handleClose = useCallback(() => {
+    setIsManual(false);
+    setSelectedGenres([]);
+    setSelectedType(TYPES[1]);
+    onClose();
+  }, [onClose]);
+
+  // Handle scroll lock on mount
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
+  // Handle prediction changes
   useEffect(() => {
     if (prediction?.manualMode) {
       setIsManual(true);
@@ -33,14 +57,16 @@ export default function SurpriseModal({ prediction, onClose, onRead, onManualSea
     }
   }, [prediction]);
 
+  // Handle manual search
   const handleSearch = () => {
+    if (selectedGenres.length === 0) return;
+
     onManualSearch({
       genres: selectedGenres,
       preferred_episodes: selectedType.value,
       type: selectedType.type,
       top_n: 10
     });
-    // We stay in this component; parent will update 'prediction' prop with result
   };
 
   const toggleGenre = (genre) => {
@@ -65,24 +91,27 @@ export default function SurpriseModal({ prediction, onClose, onRead, onManualSea
         : "";
 
     const matchedBlog = title.length > 0
-      ? BLOGS.find(b => typeof b?.title === "string" && b.title.toLowerCase().includes(title.toLowerCase()))
+      ? BLOGS.find(b =>
+        typeof b?.title === "string" &&
+        b.title.toLowerCase().includes(title.toLowerCase())
+      )
       : null;
 
     return (
-      <div className="relative p-8 text-center animate-in fade-in zoom-in duration-300">
+      <div className="relative p-8 text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-teal-300 mb-6 flex justify-center items-center gap-2">
-          <Sparkles className="w-3 h-3" />
+          <Sparkles className="w-3 h-3 animate-pulse" />
           AI Recommendation
         </p>
 
-        <h2 className="text-xl font-medium text-slate-400">You should watch</h2>
+        <h2 className="text-xl font-medium text-slate-400 mb-6">You should watch</h2>
 
-        <h3 className="mt-4 text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-200 via-teal-400 to-emerald-400 drop-shadow-[0_0_15px_rgba(45,212,191,0.3)]">
+        <h3 className="mt-4 text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-200 via-teal-400 to-emerald-400 drop-shadow-[0_0_15px_rgba(45,212,191,0.3)] mb-4">
           {title || "A Hidden Anime Gem"}
         </h3>
 
         {typeof prediction?.score === "number" && (
-          <div className="mt-2 text-sm text-slate-400 flex justify-center items-center gap-2">
+          <div className="mb-8 text-sm text-slate-400 flex justify-center items-center gap-2">
             <span>Match Score:</span>
             <span className="text-teal-400 font-bold bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">
               {prediction.score.toFixed(2)}%
@@ -90,39 +119,45 @@ export default function SurpriseModal({ prediction, onClose, onRead, onManualSea
           </div>
         )}
 
-        <div className="mt-8 bg-white/5 rounded-2xl p-6 border border-white/5 backdrop-blur-sm">
-          <p className="text-sm text-slate-300 leading-relaxed">
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 mb-8 shadow-lg">
+          <p className="text-sm text-slate-300 leading-relaxed mb-6">
             {prediction.reason || "Based on your preferences, this seems like a perfect fit."}
           </p>
 
           {matchedBlog ? (
-            <div className="mt-4 pt-4 border-t border-white/10">
-              <p className="text-teal-400 text-xs uppercase tracking-widest font-bold mb-2">Editor's Breakdown Available</p>
+            <div className="space-y-3">
+              <p className="text-teal-400 text-xs uppercase tracking-widest font-bold flex items-center gap-1">
+                <ChevronRight className="w-3 h-3" />
+                Editor's Breakdown Available
+              </p>
               <button
-                onClick={() => { onRead(matchedBlog); onClose(); }}
-                className="w-full py-3 rounded-xl bg-teal-400/10 border border-teal-400/50 text-teal-300 font-bold hover:bg-teal-400 hover:text-black transition-all"
+                onClick={() => {
+                  onRead(matchedBlog);
+                  handleClose();
+                }}
+                className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-teal-500/20 to-teal-400/20 border border-teal-400/30 text-teal-300 font-bold hover:from-teal-500 hover:to-teal-400 hover:border-teal-300 hover:text-teal-100 backdrop-blur-sm transition-all shadow-lg hover:shadow-teal-400/20"
               >
-                Read Blog Review
+                Read Full Blog Review →
               </button>
             </div>
           ) : (
             <button
-              onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(title + " anime")}`, "_blank")}
-              className="mt-4 w-full py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-bold hover:bg-white/10 flex items-center justify-center gap-2 transition-all"
+              onClick={() => window.open(`https://myanimelist.net/anime.php?q=${encodeURIComponent(title)}`, "_blank")}
+              className="w-full py-3 px-6 rounded-xl bg-white/5 border border-white/20 text-slate-300 font-bold hover:bg-white/10 hover:border-white/30 backdrop-blur-sm flex items-center justify-center gap-2 transition-all shadow-md"
             >
               <Search className="w-4 h-4" />
-              Find to Watch
+              Find on MyAnimeList
             </button>
           )}
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/5 flex gap-4 justify-center">
+        <div className="pt-6 border-t border-white/10 flex gap-4 justify-center">
           <button
             onClick={() => setIsManual(true)}
-            className="text-xs text-slate-500 uppercase tracking-widest hover:text-teal-300 flex items-center gap-1 transition-colors"
+            className="group text-xs text-slate-400 uppercase tracking-widest font-medium hover:text-teal-300 flex items-center gap-1 transition-all p-2 -m-2 rounded-lg hover:bg-white/5"
           >
-            <RotateCw className="w-3 h-3" />
-            Try Another Criteria
+            <SlidersHorizontal className="w-3 h-3 group-hover:rotate-12 transition-transform" />
+            Customize Search
           </button>
         </div>
       </div>
@@ -130,33 +165,41 @@ export default function SurpriseModal({ prediction, onClose, onRead, onManualSea
   };
 
   const renderForm = () => (
-    <div className="relative p-8 animate-in slide-in-from-right duration-300">
-      <div className="flex justify-between items-center mb-6">
-        <p className="text-xs uppercase tracking-[0.3em] text-teal-300">
-          Manual Discovery
-        </p>
-        {prediction && !prediction.manualMode && (
-          <button onClick={() => setIsManual(false)} className="text-slate-500 hover:text-white">
-            <X className="w-4 h-4" />
-          </button>
-        )}
+    <div className="relative p-8 max-h-[80vh] overflow-y-auto custom-scrollbar">
+      <div className="flex justify-between items-center mb-8 sticky top-0 bg-black/50 backdrop-blur-sm pb-4 z-10">
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-teal-300 flex items-center gap-2">
+            <SlidersHorizontal className="w-4 h-4" />
+            Manual Discovery
+          </p>
+          <p className="text-xs text-slate-500 mt-1">Pick your perfect anime</p>
+        </div>
+        <button
+          onClick={handleClose}
+          className="p-2 text-slate-400 hover:text-teal-300 hover:bg-white/10 rounded-xl transition-all group"
+        >
+          <X className="w-5 h-5 group-hover:rotate-90" />
+        </button>
       </div>
 
       <div className="space-y-6">
         {/* Type Selector */}
         <div>
-          <label className="text-xs text-slate-400 uppercase tracking-widest block mb-3">Preferred Length</label>
-          <div className="grid grid-cols-2 gap-2">
+          <label className="text-xs text-slate-400 uppercase tracking-widest block mb-3 flex items-center gap-1">
+            Preferred Length
+          </label>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {TYPES.map(t => (
               <button
                 key={t.label}
                 onClick={() => setSelectedType(t)}
-                className={`text-xs p-2 rounded-lg border transition-all ${selectedType.label === t.label
-                    ? "bg-teal-500/20 border-teal-500 text-teal-300"
-                    : "bg-white/5 border-white/5 text-slate-400 hover:bg-white/10"
+                className={`p-3 rounded-xl border-2 transition-all group hover:shadow-md backdrop-blur-sm ${selectedType.label === t.label
+                  ? "bg-gradient-to-r from-teal-500 to-emerald-500 border-teal-500 text-black font-bold shadow-lg shadow-teal-400/25"
+                  : "bg-white/5 border-white/20 text-slate-300 hover:bg-white/10 hover:border-white/30 hover:text-teal-300"
                   }`}
               >
-                {t.label}
+                <div className="text-xs font-bold">{t.label}</div>
+                <div className="text-[10px] opacity-75">{t.type}</div>
               </button>
             ))}
           </div>
@@ -164,17 +207,17 @@ export default function SurpriseModal({ prediction, onClose, onRead, onManualSea
 
         {/* Genre Selector */}
         <div>
-          <label className="text-xs text-slate-400 uppercase tracking-widest block mb-3">
-            Genres <span className="text-slate-600">({selectedGenres.length} selected)</span>
+          <label className="text-xs text-slate-400 uppercase tracking-widest block mb-3 flex items-center gap-1">
+            Genres <span className="text-teal-400 font-bold">({selectedGenres.length})</span>
           </label>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto custom-scrollbar pb-2">
             {GENRES.map(g => (
               <button
                 key={g}
                 onClick={() => toggleGenre(g)}
-                className={`text-[10px] px-3 py-1.5 rounded-full border transition-all ${selectedGenres.includes(g)
-                    ? "bg-teal-500 text-black border-teal-500 font-bold"
-                    : "bg-black border-white/20 text-slate-400 hover:border-white/50"
+                className={`text-xs px-4 py-2 rounded-full border font-medium transition-all whitespace-nowrap ${selectedGenres.includes(g)
+                  ? "bg-teal-500 text-black border-teal-500 shadow-md hover:shadow-lg transform scale-105"
+                  : "bg-white/5 border-white/20 text-slate-400 hover:bg-white/10 hover:border-teal-400/50 hover:text-teal-300 hover:shadow-md"
                   }`}
               >
                 {g}
@@ -183,33 +226,50 @@ export default function SurpriseModal({ prediction, onClose, onRead, onManualSea
           </div>
         </div>
 
+        {/* Search Button */}
         <button
           onClick={handleSearch}
           disabled={isLoading || selectedGenres.length === 0}
-          className="w-full mt-4 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-black font-black uppercase tracking-widest hover:scale-[1.02] disabled:opacity-50 disabled:scale-100 transition-all shadow-[0_0_20px_rgba(45,212,191,0.3)]"
+          className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-teal-500 via-emerald-500 to-teal-600 text-black font-black uppercase tracking-[0.1em] text-sm shadow-2xl hover:shadow-teal-500/40 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:scale-100 transition-all backdrop-blur-sm border border-teal-400/20"
         >
-          {isLoading ? "Analyzing..." : "Find Anime"}
+          {isLoading ? (
+            <div className="flex items-center justify-center gap-2">
+              <RotateCw className="w-4 h-4 animate-spin" />
+              Analyzing Preferences...
+            </div>
+          ) : (
+            `Find My Anime (${selectedGenres.length} genres)`
+          )}
         </button>
       </div>
     </div>
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-lg">
+      {/* Overlay click to close */}
+      <div
+        className="absolute inset-0 bg-black/50"
+        onClick={handleClose}
+        aria-hidden="true"
+      />
+
       <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        className="relative w-full max-w-lg rounded-3xl bg-black/90 border border-white/10 overflow-hidden shadow-2xl"
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+        className="relative w-full max-w-md rounded-3xl bg-gradient-to-br from-slate-950/95 via-black/80 to-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl overflow-hidden max-h-[90vh]"
       >
         {/* Decorative Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-teal-500/10 blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-b from-teal-500/10 to-transparent blur-[80px] pointer-events-none" />
 
+        {/* Global Close Button */}
         <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 text-slate-500 hover:text-white bg-black/50 rounded-full hover:bg-white/10 transition-colors"
+          onClick={handleClose}
+          className="absolute top-6 right-6 z-50 p-3 text-slate-400 hover:text-teal-300 hover:bg-white/20 rounded-2xl backdrop-blur-sm shadow-lg transition-all group hover:scale-110 hover:rotate-3"
+          aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-6 h-6 group-hover:rotate-90 transition-transform" />
         </button>
 
         {isManual ? renderForm() : renderResult()}
