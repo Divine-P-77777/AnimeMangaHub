@@ -1,40 +1,40 @@
 export const BLOGS = [
   {
-    id: 1,
-    title: "Steins;Gate – When Time Refuses to Obey",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY3OXyAtH8S-DFCWUwa0-4uyzthMjC3su8kA&s",
-    description: "A deep dive into causality, timelines, and the emotional cost of rewriting fate.",
-    content: "Steins;Gate explores the fragile boundary between curiosity and consequence, rated 9.07 on MyAnimeList with over 1.5 million members.[web:1][web:4]",
-    anime: {
-      episodes: 24,
-      members: 1500000,
-      rating: 9.07,
-      genres: ["Sci-Fi", "Thriller"],
-      type: "TV",
+    "id": 1,
+    "title": "Steins;Gate – When Time Refuses to Obey",
+    "image": "https://wallpapers.com/images/featured/steins-gate-eyml4k816uled9bw.jpg",
+    "description": "A deep dive into causality, timelines, and the emotional cost of rewriting fate for new anime watchers.",
+    "content": "Steins;Gate serves as an ideal introduction for newcomers to anime, particularly those curious about sci-fi and thriller genres. This 24-episode TV series, released in 2011 and adapted from a visual novel, follows Okabe Rintarou—a self-proclaimed 'mad scientist' with delusions of grandeur—who runs a makeshift lab in Akihabara, Tokyo. Alongside his eccentric friends, including the tech genius Mayuri and the mysterious Kurisu Makise, Okabe stumbles upon a bizarre invention: a microwave that sends text messages to the past. What begins as playful experimentation quickly spirals into a nightmare of converging timelines, shadowy organizations, and the harsh realities of altering causality.\n\nFor first-time viewers, Steins;Gate masterfully balances accessibility with depth. The early episodes lean into comedy and slice-of-life antics, easing you into the world without bombarding you with jargon. Okabe's over-the-top persona, complete with his 'El Psy Kongroo' catchphrase, provides constant laughs, while character dynamics build genuine attachments. As the plot accelerates around episode 5, the thriller elements kick in—sudden deaths, erased memories, and a race against SERN, a dystopian conspiracy lurking in the shadows. The series explores profound questions: Can you save someone without dooming others? What price do you pay for defying time itself? These themes resonate emotionally, making the high-stakes time leaps feel personal rather than gimmicky.\n\nVisually, Steins;Gate employs a clean, detailed art style typical of Shaft studio, with striking red hues symbolizing danger amid the mundane. The soundtrack, featuring the iconic 'Gate of Steiner' OP, amplifies tension during phone trigger activations—short D-mails that rewrite reality. With a 9.07 MyAnimeList rating from over 1.5 million members, genres like Sci-Fi and Thriller, and genres such as Drama and Romance woven in, it appeals broadly. New watchers appreciate the self-contained story arc, avoiding endless seasons common in shonen.\n\nCharacter growth anchors the experience. Okabe evolves from a chuunibyou (delusional teen) to a tormented guardian of timelines, grappling with isolation. Supporting cast like the hacker Daru and shy Faris add levity and plot propulsion. Kurisu's tsundere intellect sparks the central romance, humanizing the sci-fi. For beginners, this relational focus makes abstract concepts tangible—time travel isn't about spectacle but sacrifice.\n\nPractical tips: Watch dubbed if subs distract, but subbed preserves subtle wordplay. Budget 10-12 hours over a weekend; the pacing rewards bingeing. Post-series, explore the OVA 'Mayuri Judgment' or movie 'Load Region of Déjà Vu' for epilogues. Steins;Gate isn't just anime—it's a gateway to appreciating narrative innovation, priming you for denser works like Serial Experiments Lain or Ergo Proxy. Dive in, but remember: the world line has already shifted.",
+    "anime": {
+      "episodes": 24,
+      "members": 1500000,
+      "rating": 9.07,
+      "genres": ["Sci-Fi", "Thriller", "Drama", "Romance"],
+      "type": "TV"
     },
-    readTime: "6 min read",
-    tag: "Sci-Fi",
+    "readTime": "8 min read",
+    "tag": "Sci-Fi"
   },
   {
-    id: 2,
-    title: "Attack on Titan – Freedom at a Terrible Price",
-    image: "https://i.ytimg.com/vi/1RGvDJV6gIA/sddefault.jpg",
-    description: "What does freedom mean in a world surrounded by walls and war?",
-    content: "Attack on Titan delves into cycles of hatred and survival, boasting around 2.5 million members and a 8.54 rating on MAL.[web:1][web:6]",
-    anime: {
-      episodes: 89,
-      members: 2500000,
-      rating: 8.54,
-      genres: ["Action", "Drama", "Fantasy"],
-      type: "TV",
+    "id": 2,
+    "title": "Attack on Titan – Freedom at a Terrible Price",
+    "image": "https://wallpapers-clan.com/wp-content/uploads/2024/07/attack-on-titan-epic-scene-desktop-wallpaper-preview.jpg",
+    "description": "What does freedom mean in a world surrounded by walls and war? An introductory guide for new anime watchers.",
+    "content": "Attack on Titan (Shingeki no Kyojin) stands as a powerhouse entry for anime newcomers seeking high-octane action blended with philosophical depth. Launched in 2013 as a TV series spanning 89 episodes across four seasons (plus OVAs and Final Season specials), it immerses viewers in a post-apocalyptic world where humanity clings to survival within massive concentric walls—Wall Maria, Rose, and Sina—protecting them from colossal Titans, grotesque giants that devour humans without reason. The story ignites when Eren Yeager, Mikasa Ackerman, and Armin Arlert witness their district's fall to a Titan breach, propelling Eren into a vengeful crusade to eradicate the monsters and reclaim freedom beyond the walls.\n\nTailored for beginners, the series hooks instantly with its visceral first episode: breathtaking animation by WIT Studio (seasons 1-3) and MAPPA (final arcs), pulse-pounding OST like 'Guren no Yumiya,' and raw emotional stakes. Early arcs focus on survival horror and military training within the Scout, Garrison, and Military Police regiments, introducing ODM gear for acrobatic Titan-slaying battles. As plots unfold, revelations shatter the black-and-white worldview, diving into cycles of hatred, nationalism, and moral ambiguity—questioning if humanity's greatest threat lurks within. With an 8.54 MyAnimeList rating from over 2.5 million members, genres spanning Action, Drama, and Fantasy (plus Suspense and Military), it evolves from monster-of-the-week thrills to geopolitical intrigue.\n\nCharacters drive the narrative's heart. Eren embodies rage-fueled determination, evolving through trauma; Mikasa's unwavering loyalty and Armin's strategic mind form the iconic trio. Anti-heroes like Levi Ackerman deliver superhuman feats and wit, while complex villains force empathy amid brutality. For new watchers, this growth arc teaches anime's power in character-driven storytelling—alliances shift, betrayals sting, and 'tatakae' (fight) becomes a rallying cry for autonomy.\n\nThemes resonate universally: freedom's cost in a walled prison mirroring real-world conflicts, the illusion of safety, and inherited grudges perpetuating war. Symbolism abounds—Titans as primal fear, walls as oppressive comfort—crafted by Hajime Isayama's manga mastery. Pacing suits binging: season 1 grips, 2-3 build suspense, finals deliver epic closure.\n\nBeginner essentials: Start with subbed for intensity (dub excels later); watch OVAs like 'Ilse's Notebook' post-season 1 for lore. Avoid forums until finale to preserve shocks. At 7 min read equivalent in depth, Attack on Titan primes you for shonen epics like Jujutsu Kaisen or darker tales like Berserk, proving anime's range from spectacle to soul-searching.",
+    "anime": {
+      "episodes": 89,
+      "members": 2500000,
+      "rating": 8.54,
+      "genres": ["Action", "Drama", "Fantasy", "Suspense", "Military"],
+      "type": "TV"
     },
-    readTime: "7 min read",
-    tag: "Action",
+    "readTime": "8 min read",
+    "tag": "Action"
   },
   {
     id: 3,
     title: "Your Name – A Thread Across Time",
-    image: "https://wallpapers.com/images/hd/your-name-taki-and-mitsuha-red-string-knd59f7ecab132ma.jpg",
+    image: "https://wallpapercat.com/w/full/7/e/b/117656-1920x1080-desktop-1080p-your-name-background.jpg",
     description: "A poetic story of love, loss, and cosmic coincidence.",
     content: "Makoto Shinkai's masterpiece intertwines distance and destiny, holding a 9.37 MAL score with 2 million members.[web:4]",
     anime: {
@@ -50,7 +50,7 @@ export const BLOGS = [
   {
     id: 4,
     title: "Fullmetal Alchemist: Brotherhood – The Ultimate Sacrifice",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmWlojQ8V1jRWGVlLFxNjk9VamUmbiBdSIjg&s",
+    image: "https://images5.alphacoders.com/519/519750.png",
     description: "Alchemy, atonement, and the bonds that define humanity.",
     content: "Fullmetal Alchemist: Brotherhood tops charts at 9.09 on MAL, with millions of fans praising its epic storyline.[web:1][web:4]",
     anime: {
@@ -66,7 +66,7 @@ export const BLOGS = [
   {
     id: 5,
     title: "Hunter x Hunter (2011) – The Hunter's Oath",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgZihkfu1YaZILHSHG1NLcQCuE7hAUpQ2wzw&s",
+    image: "https://images.alphacoders.com/116/thumb-1920-1163408.jpg",
     description: "Friendship, rivalry, and the endless pursuit of strength.",
     content: "Madhouse's adaptation earns 9.03 on MAL, captivating over 2 million members with its depth.[web:1][web:4]",
     anime: {
@@ -82,7 +82,7 @@ export const BLOGS = [
   {
     id: 6,
     title: "Frieren: Beyond Journey's End – Echoes of Eternity",
-    image: "https://m.media-amazon.com/images/S/pv-target-images/0cee73934e4d8cc9fe65c4ab759b4c1b049f75fff3f4c52b273c2699efadd7d1._SX1080_FMjpg_.jpg",
+    image: "https://images6.alphacoders.com/134/1343089.jpeg",
     description: "An elf mage reflects on time, loss, and unspoken regrets.",
     content: "Frieren leads 2020s ratings at 9.35 on MAL with 1.2 million members, redefining fantasy.[web:4][web:12]",
     anime: {
@@ -178,7 +178,7 @@ export const BLOGS = [
   {
     id: 12,
     title: "Vinland Saga – Viking Sagas of Vengeance",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbnDKN5N0QDBoQ-GbrCE0VXqLi_Cde9szZ9g&s",
+    image: "https://4kwallpapers.com/images/wallpapers/vinland-saga-manga-3840x2160-14832.jpg",
     description: "From warrior to seeker of paradise.",
     content: "Vinland Saga impresses at 8.75 MAL rating.[web:4]",
     anime: {
@@ -194,7 +194,7 @@ export const BLOGS = [
   {
     id: 13,
     title: "Bleach: Thousand-Year Blood War – Final Arc Glory",
-    image: "https://wallpapers.com/images/hd/ichigo-and-zangetsu-bleach-4k-ultra-hd-fanart-ymhbljxwfhxsnm3n.jpg",
+    image: "https://wallpapers-clan.com/wp-content/uploads/2025/01/ichigo-bleach-sunset-pc-wallpaper-cover.jpg",
     description: "Soul Reapers vs Quincy in epic conclusion.",
     content: "Bleach TYBW hits 9.01 on MAL.[web:1]",
     anime: {
@@ -242,7 +242,7 @@ export const BLOGS = [
   {
     id: 16,
     title: "Jujutsu Kaisen – Curses and Sorcerers",
-    image: "https://us-east-1-bandai.graphassets.com/AXzioIclSWilEjFtsMJPwz/TNkEuJ56SmTNWTqcvJwR",
+    image: "https://p325k7wa.twic.pics/high/jujutsu-kaisen/jujutsu-kaisen-cursed-clash/00-page-setup/JJK-header-mobile2.jpg?twic=v1/resize=760/step=10/quality=80",
     description: "Modern sorcery battles ancient curses.",
     content: "Jujutsu Kaisen thrives with high popularity.[web:6]",
     anime: {
@@ -290,7 +290,7 @@ export const BLOGS = [
   {
     id: 19,
     title: "Naruto – Ninja Way Perseverance",
-    image: "https://static.toiimg.com/thumb/msid-109699531,width-1280,height-720,resizemode-4/109699531.jpg",
+    image: "https://i.pinimg.com/736x/79/2a/48/792a48f1bd5401b1f0fcd62bcc81a5db.jpg",
     description: "From outcast to Hokage legend.",
     content: "Naruto's saga rates 7.99 on MAL.[web:6]",
     anime: {

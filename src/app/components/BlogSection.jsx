@@ -4,12 +4,31 @@ import { useMemo, useState } from "react";
 import BLOGS from "@/constants/index";
 import BlogCard from "./BlogCard";
 import SurpriseModal from "./SurpriseModal";
+import BlogView from "./BlogView";
+import { getRecommendation } from "@/services/recommendation";
+import { Sparkles, Loader2 } from "lucide-react";
 
 const PAGE_SIZE = 10;
 
 export default function BlogSection() {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [page, setPage] = useState(1);
+
+  // Recommendation Logic
+  const [recommendation, setRecommendation] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSurprise = async () => {
+    setLoading(true);
+    try {
+      const result = await getRecommendation();
+      setRecommendation(result);
+    } catch (error) {
+      console.error("Failed to get recommendation", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const totalPages = Math.ceil(BLOGS.length / PAGE_SIZE);
 
@@ -22,17 +41,33 @@ export default function BlogSection() {
     <>
       {/* Section Heading */}
       <section className="px-6 py-16 max-w-7xl mx-auto">
-        <div className="mb-10 text-center md:text-left">
-          <p className="text-xs uppercase tracking-[0.4em] text-teal-400/80">
-            Before You Watch
-          </p>
-          <h2 className="mt-3 text-3xl font-extrabold text-slate-100 md:text-4xl">
-            Explore Blogs
-          </h2>
-          <p className="mt-3 max-w-xl text-sm text-slate-400">
-            Deep dives, anime theories, manga breakdowns, and gaming-style
-            editorials curated just for you.
-          </p>
+        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="text-center md:text-left">
+            <p className="text-xs uppercase tracking-[0.4em] text-teal-400/80">
+              Before You Watch
+            </p>
+            <h2 className="mt-3 text-3xl font-extrabold text-slate-100 md:text-4xl">
+              Explore Blogs
+            </h2>
+            <p className="mt-3 max-w-xl text-sm text-slate-400">
+              Deep dives, anime theories, manga breakdowns, and gaming-style
+              editorials curated just for you.
+            </p>
+          </div>
+
+          {/* Surprise Button */}
+          <button
+            onClick={handleSurprise}
+            disabled={loading}
+            className="group relative flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 px-8 py-3 text-sm font-bold uppercase tracking-widest text-white transition-all hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(45,212,191,0.5)] disabled:opacity-70"
+          >
+            {loading ? (
+              <Loader2 className="w-5 h-5 animate-spin" />
+            ) : (
+              <Sparkles className="w-5 h-5" />
+            )}
+            <span>Surprise Me</span>
+          </button>
         </div>
 
         {/* Blog Grid */}
@@ -68,13 +103,22 @@ export default function BlogSection() {
             Next
           </button>
         </div>
+
       </section>
 
-      {/* Surprise Modal (single source of truth) */}
-      <SurpriseModal
+      {/* Blog Details Modal */}
+      <BlogView
         blog={selectedBlog}
         onClose={() => setSelectedBlog(null)}
       />
+
+      {/* Recommendation Modal */}
+      <SurpriseModal
+        prediction={recommendation}
+        onClose={() => setRecommendation(null)}
+        onRead={(blog) => setSelectedBlog(blog)}
+      />
+
     </>
   );
 }
