@@ -11,9 +11,13 @@ const getRandomBlogs = (blogs, count = 5) => {
 };
 
 export default function Hero({ title, description, onSurprise }) {
-  const [featuredBlogs] = useState(() => getRandomBlogs(BLOGS, 5));
+  const [featuredBlogs, setFeaturedBlogs] = useState(BLOGS.slice(0, 5));
   const [activeIndex, setActiveIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    setFeaturedBlogs(getRandomBlogs(BLOGS, 5));
+  }, []);
 
   const activeBlog = featuredBlogs[activeIndex];
 
