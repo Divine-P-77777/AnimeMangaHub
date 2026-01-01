@@ -4,7 +4,7 @@ import { buildPreferenceProfile } from "@/lib/preferenceBuilder";
 
 const API_URL = process.env.NODE_ENV === "development"
     ? "http://localhost:8000"
-    : process.env.RECOMMENDATION_API_URL;
+    : (process.env.NEXT_PUBLIC_RECOMMENDATION_API_URL || "https://animesuggestapi.onrender.com");
 
 
 export async function getRecommendation(manualPreference = null) {
