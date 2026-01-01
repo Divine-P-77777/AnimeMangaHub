@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "AnimeMangaHub | Discover Your Next Favorite Anime",
+  title: "AniScout | Discover Your Next Favorite Anime",
   description: "Explore curated anime blogs, manga breakdowns, and get personalized AI recommendations.",
   icons: {
     icon: "/logo.png",
@@ -20,15 +20,15 @@ export const metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "AnimeMangaHub | Discover Your Next Favorite Anime",
+    title: "AniScout | Discover Your Next Favorite Anime",
     description: "Deep dives, anime theories, and AI-powered recommendations.",
-    siteName: "AnimeMangaHub",
+    siteName: "AniScout",
     images: [
       {
         url: "/logo.png",
         width: 800,
         height: 600,
-        alt: "AnimeMangaHub Logo",
+        alt: "AniScout Logo",
       },
     ],
     locale: "en_US",
@@ -36,7 +36,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AnimeMangaHub",
+    title: "AniScout",
     description: "Deep dives, anime theories, and AI-powered recommendations.",
     images: ["/logo.png"],
   },

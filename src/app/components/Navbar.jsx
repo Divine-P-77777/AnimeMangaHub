@@ -38,7 +38,7 @@ export default function Navbar() {
 
               <img src="/logo.png" className="rounded-full w-10 " alt="Logo" />            </div>
             <span className="text-sm font-semibold tracking-[0.2em] uppercase text-teal-100">
-              Anime Blog
+              AniScout
             </span>
           </div>
 

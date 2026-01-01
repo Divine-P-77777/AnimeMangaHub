@@ -17,7 +17,7 @@ export default function Footer() {
               Anime<span className="text-teal-400">Manga</span>Hub
             </h3>
             <p className="text-sm text-slate-400 max-w-xs">
-              Your daily dose of anime, manga & gaming culture.  
+              Your daily dose of anime, manga & gaming culture.
               Read. Watch. Decode.
             </p>
 
@@ -58,7 +58,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row">
           <p className="text-xs tracking-widest text-slate-500">
-            © {new Date().getFullYear()} ANIMEMANGAHUB. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} ANISCOUT. ALL RIGHTS RESERVED.
           </p>
 
           <p className="text-[10px] uppercase tracking-[0.35em] text-teal-400/70">
