@@ -3,10 +3,29 @@
 import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { trackReadTime } from "@/lib/analytics";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 
 export default function BlogView({ blog, onClose }) {
     const startTimeRef = useRef(null);
     const modalRef = useRef(null);
+
+    function highlightNumbers(children) {
+        if (typeof children === "string") {
+            return children.split(/(\d+(\.\d+)?)/g).map((part, i) =>
+                /\d/.test(part) ? (
+                    <span key={i} className="text-cyan-400 font-semibold">
+                        {part}
+                    </span>
+                ) : (
+                    part
+                )
+            );
+        }
+        return children;
+    }
+
 
     useEffect(() => {
         if (!blog) return;
@@ -121,18 +140,32 @@ export default function BlogView({ blog, onClose }) {
                     </section>
 
                     <article className="px-4 sm:px-8 py-8 max-w-3xl mx-auto">
-                        <div
-                            className="prose prose-invert prose-base sm:prose-lg max-w-none
-                            prose-headings:text-slate-100
-                            prose-headings:font-black
-                            prose-p:text-slate-300
-                            prose-strong:text-slate-100
-                            prose-a:text-teal-400"
-                            dangerouslySetInnerHTML={{
-                                __html: blog.content.replace(/\n/g, "<br/>"),
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                                strong: ({ children }) => (
+                                    <strong className="font-bold text-slate-100">
+                                        {children}
+                                    </strong>
+                                ),
+
+                                p: ({ children }) => (
+                                    <p className="text-slate-300 leading-relaxed mb-4">
+                                        {highlightNumbers(children)}
+                                    </p>
+                                ),
+
+                                h2: ({ children }) => (
+                                    <h2 className="text-2xl font-black text-slate-100 mt-8 mb-3">
+                                        {children}
+                                    </h2>
+                                ),
                             }}
-                        />
+                        >
+                            {blog.content}
+                        </ReactMarkdown>
                     </article>
+
                 </div>
 
                 <footer className="px-4 sm:px-6 py-3 border-t border-white/10 bg-black/60
