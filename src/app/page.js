@@ -6,9 +6,12 @@ import Hero from "@/app/components/Hero";
 import BlogSection from "./components/BlogSection";
 import Footer from "@/app/components/Footer";
 import SurpriseModal from "@/app/components/SurpriseModal";
+import { getRecommendation } from "@/services/recommendation";
 
 export default function HomePage() {
-  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [predictions, setPredictions] = useState([]);
+  const [showSurprise, setShowSurprise] = useState(false);
+  const [activeBlog, setActiveBlog] = useState(null);
 
   return (
     <main className="min-h-screen bg-black">
@@ -16,22 +19,28 @@ export default function HomePage() {
 
       <Hero
         title="Don't Just Watch. Discover."
-        description="Your ultimate destination for in-depth anime reviews, manga breakdowns, and intelligent recommendations tailored to your taste."
-        onSurprise={() => {
-          document.getElementById('surprise-me-btn')?.click(); // Quick hack to trigger existing logic without massive refactor
-          // ideally we lift state, but this works instanly for now
-          document.querySelector('section')?.scrollIntoView({ behavior: 'smooth' });
+        description="Your ultimate destination for in-depth anime reviews."
+        onSurprise={() => setShowSurprise(true)}
+      />
+
+      <BlogSection
+        onSurprise={(results) => {
+          setPredictions(results);
+          setShowSurprise(true);
         }}
       />
 
-      {/* Pass setter DOWN */}
-      <BlogSection onSurprise={setSelectedBlog} />
-
-      {/* Controlled modal */}
-      <SurpriseModal
-        blog={selectedBlog}
-        onClose={() => setSelectedBlog(null)}
-      />
+      {showSurprise && (
+        <SurpriseModal
+          predictions={predictions}
+          onClose={() => setShowSurprise(false)}
+          onRead={(blog) => setActiveBlog(blog)}
+          onManualSearch={async (criteria) => {
+            const results = await getRecommendation(criteria);
+            setPredictions(results);
+          }}
+        />
+      )}
 
       <Footer />
     </main>

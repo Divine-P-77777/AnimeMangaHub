@@ -40,8 +40,9 @@ export async function getRecommendation(manualPreference = null) {
     console.log(" Recommendation received:", data);
 
     if (data.results && data.results.length > 0) {
-        return data.results[0];
+        return data.results.slice(0, 5);
     }
+
 
     return null;
 }
