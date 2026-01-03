@@ -4,13 +4,13 @@ import { buildPreferenceProfile } from "@/lib/preferenceBuilder";
 
 const API_URL = process.env.NODE_ENV === "development"
     ? "http://localhost:8000"
-    : (process.env.NEXT_PUBLIC_RECOMMENDATION_API_URL || "https://animesuggestapi.onrender.com");
+    : (process.env.NEXT_PUBLIC_RECOMMENDATION_API_URL );
 
 export async function getRecommendation(manualPreference = null) {
     let preference;
 
     if (manualPreference) {
-        console.log("🛠️ Using manual preference:", manualPreference);
+        console.log(" Using manual preference:", manualPreference);
         preference = manualPreference;
     } else {
         const history = getUserHistory();
@@ -18,11 +18,11 @@ export async function getRecommendation(manualPreference = null) {
     }
 
     if (!preference) {
-        console.warn("⚠️ Not enough user activity & no manual input");
+        console.warn(" Not enough user activity & no manual input");
         return null;
     }
 
-    console.log("📤 Sending preference to API:", preference);
+    console.log("Sending preference to API:", preference);
 
     const res = await fetch(`${API_URL}/surprise`, {
         method: "POST",
