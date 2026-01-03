@@ -19,8 +19,10 @@ export async function getRecommendation(manualPreference = null) {
 
     if (!preference) {
         console.warn(" Not enough user activity & no manual input");
+        alert("Please read and click on some blogs to get recommendations!");
         return null;
     }
+
 
     console.log("Sending preference to API:", preference);
 

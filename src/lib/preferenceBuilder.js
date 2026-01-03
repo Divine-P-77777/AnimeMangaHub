@@ -11,7 +11,6 @@ export function buildPreferenceProfile(blogs, history) {
         const clicks = history.clicks[blog.id] || 0;
         const readSeconds = history.readTimes[blog.id] || 0;
 
-        // stronger signal from reading than clicking
         const weight = clicks + (readSeconds / 60) * 2;
 
         if (weight <= 0) return;
